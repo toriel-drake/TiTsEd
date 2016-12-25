@@ -85,6 +85,8 @@
     <Compile Include="ViewModel\FlagVM.cs" />
     <Compile Include="ViewModel\ItemVM.cs" />
     <Compile Include="ViewModel\KeyItemVM.cs" />
+    <Compile Include="ViewModel\ObjectViewModel.cs" />
+    <Compile Include="ViewModel\ObjectViewModelHierarchy.cs" />
     <Compile Include="ViewModel\StorageClassVM.cs" />
     <Compile Include="ViewModel\PerkVM.cs" />
     <Compile Include="ViewModel\StatusEffectVM.cs" />
@@ -140,6 +142,9 @@
     </Compile>
     <Compile Include="View\PerkPage.xaml.cs">
       <DependentUpon>PerkPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FlagsPage.xaml.cs">
+      <DependentUpon>FlagsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RawPage.xaml.cs">
       <DependentUpon>RawPage.xaml</DependentUpon>
@@ -216,6 +221,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\PerkPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\FlagsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

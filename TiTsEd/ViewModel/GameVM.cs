@@ -33,7 +33,7 @@ namespace TiTsEd.ViewModel {
             if (null != previousVM) {
                 _perkSearchText = previousVM._perkSearchText;
                 _keyItemSearchText = previousVM._keyItemSearchText;
-                _rawDataSearchText = previousVM._rawDataSearchText;
+                _flagsSearchText = previousVM._flagsSearchText;
             }
 
             // Perks
@@ -74,7 +74,7 @@ namespace TiTsEd.ViewModel {
                     _allFlags[flagName] = new FlagVM(this, ref flagsObject, data);
                 }
             }
-            Flags = new UpdatableCollection<FlagVM>(_allFlags.Values.ToList().Where(x => x.Match(RawDataSearchText)));
+            Flags = new UpdatableCollection<FlagVM>(_allFlags.Values.ToList().Where(x => x.Match(FlagsSearchText)));
         }
 
         static void ImportMissingNamedVectors(AmfObject items, IEnumerable<XmlStorageClass> xmlItems, string nameProperty, Func<AmfObject, String> descriptionGetter = null, IList<XmlStorageClass> targetXmlList = null) {
@@ -364,15 +364,15 @@ namespace TiTsEd.ViewModel {
             }
         }
 
-        string _rawDataSearchText = "";
-        public string RawDataSearchText
+        string _flagsSearchText = "";
+        public string FlagsSearchText
         {
-            get { return _rawDataSearchText; }
+            get { return _flagsSearchText; }
             set {
-                if (_rawDataSearchText == value) {
+                if (_flagsSearchText == value) {
                     return;
                 }
-                _rawDataSearchText = value;
+                _flagsSearchText = value;
                 foreach (var group in Character.StatusEffectGroups) group.Update();
                 Flags.Update();
             }
@@ -412,9 +412,9 @@ namespace TiTsEd.ViewModel {
                         flag.Value = null;
                         FlagsObject[flagName] = null;
                         OnFlagChanged(flagName);
-                        var search = RawDataSearchText;
-                        RawDataSearchText = @"\u200B"; // setting to Unicode zero-width space
-                        RawDataSearchText = search;
+                        var search = FlagsSearchText;
+                        FlagsSearchText = @"\u200B"; // setting to Unicode zero-width space
+                        FlagsSearchText = search;
                     }
                 }
             }

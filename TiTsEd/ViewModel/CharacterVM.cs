@@ -1274,7 +1274,7 @@ namespace TiTsEd.ViewModel {
 
         #endregion
 
-        #region RawPage
+        #region FlagsPage
 
         public AmfObject StatusEffectsArray {
             get { return GetObj("statusEffects"); }
